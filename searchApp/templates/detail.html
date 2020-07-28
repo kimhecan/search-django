@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>글제목 = {{post.title}}</h1>
+  <h2>내용 = {{post.content}}</h2>
+  <p>글쓴이: {{post.author}}</p>
+  <p>작성 날짜 : {{post.time}}</p>
+  <a href="{% url 'index' %}">돌아가기</a>
+</body>
+
+</html>

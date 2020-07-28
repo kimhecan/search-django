@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div style="display:flex; flex-direction: row;">
+    <h2 style="flex:1"><a href="{% url 'index' %}">CBV</a></h2>
+    <form action="{% url 'result' %}" method="GET" style="flex:1">
+      <input type="text" name="query" value="{{query}}" placeholder="검색창" />
+      <select name="set">
+        <option value="all">전체선택</option>
+        <option value="title">제목만</option>
+        <option value="content">내용만</option>
+        <option value="author">글쓴이</option>
+      </select>
+    </form>
+    <h3 style="flex:1">김희찬님 안녕하세요</h3>
+  </div>
+  <div>
+    {% if posts %}
+    <p>{{setting}}조건으로 "{{query}}" 에 대한 결과는 다음과 같습니다</p>
+    <ul class="list-group" style="text-align: center; list-style-type: none;">
+      {% for i in posts %}
+      <li style="background-color: cornflowerblue;">
+        <a href="{% url 'detail' i.id %}">
+          <strong>글 제목: {{i.title}}</strong>
+          <p>글쓴이: {{i.author}}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>{{setting}} 조건으로 "{{query}}" 에 대한 결과가 없습니다</p>
+    {% endif %}
+  </div>
+  <div style="float: right;">
+    <button><a href="{% url 'create' %}">새로 만들기</a></button>
+  </div>
+
+</body>
+
+</html>
